@@ -5,7 +5,8 @@
 double get_pi();
 
 int main(int argc, char** argv) {
-
+    srand(clock());
+    srand(time(NULL));
   MPI_Init(NULL, NULL);
   int world_rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);

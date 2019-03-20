@@ -17,16 +17,19 @@ int main(int argc, char** argv) {
   int iter_num = atoi(argv[1]);
   if (world_rank == 0) {
       number = get_pi(iter_num);
+      printf("here");
       MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-      double pi = *numbers/((double) world_size)
-      printf("\nPi is %d\n", *numbers);
+      double pi = *numbers/((double) world_size);
+      printf("\nPi is %f\n", pi);
 
   } else if (world_rank == 1) {
       number = get_pi(iter_num);
+      printf("\nPi is %f\n", number);
       MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 2) {
       number = get_pi(iter_num);
+      printf("\nPi is %f\n", number);
       MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 3) {

@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+double get_pi();
+
 int main(int argc, char** argv) {
 
   MPI_Init(NULL, NULL);
@@ -10,39 +12,75 @@ int main(int argc, char** argv) {
   int world_size;
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-  // We are assuming at least 2 processes for this task
-  if (world_size < 2) {
-    fprintf(stderr, "World size must be greater than 1 for %s\n", argv[0]);
-    MPI_Abort(MPI_COMM_WORLD, 1); 
-  }
-  int *numbers = malloc(sizeof(int));
-  int number;
+  double *numbers = malloc(sizeof(double));
+  double number;
+  int iter_num = atoi(argv[1]);
   if (world_rank == 0) {
-printf("\n*************************\nREDUCE\n**************************\n");
-
-    // If we are rank 0, set the number to -1 and send it to process 1
-    number = 1;
-    MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-
-    printf("\nSum is %d\n", *numbers);    
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+      double pi = *numbers/((double) world_size)
+      printf("\nPi is %d\n", *numbers);
 
   } else if (world_rank == 1) {
-    number = 2;
-    MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 2) {
-    number = 4;
-    MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 3) {
-   number = 8;
-   MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
- 
-//   printf("Process 3 received number %d from process 0\n", number);
+  } else if (world_rank == 4) {
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+  } else if (world_rank == 5) {
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+  } else if (world_rank == 6) {
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+  } else if (world_rank == 7) {
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+  } else if (world_rank == 8) {
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+  } else if (world_rank == 9) {
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+  } else if (world_rank == 10) {
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+  } else if (world_rank == 11) {
+      number = get_pi(iter_num);
+      MPI_Reduce(&number, numbers, 1,  MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
   }
 
 
   MPI_Finalize();
   return 0;
+}
+
+double get_pi(sqr){
+  double i;
+  double count = 0;
+  for (i = 0; i < sqr; i++){
+    double x = rand()/((double)RAND_MAX);
+    double y = rand()/((double)RAND_MAX);
+    if (x * x + y * y < 1.0){
+      count += 1;
+    }
+  }
+  return (4 * count)/(sqr);
 }

@@ -27,7 +27,13 @@ int main(int argc, char** argv) {
 
   double *numbers = malloc(sizeof(double));
   double number;
-  long iter_num = atol(argv[1]);
+  int is_scaled = atoi(argv[2]);
+  long iter_num;
+    if (is_scaled == 1) {
+        iter_num = atol(argv[1]);
+    } else {
+        iter_num = atol(argv[1])/(world_size);
+    }
   if (world_rank == 0) {
       double t1, t2;
       srand(clock());

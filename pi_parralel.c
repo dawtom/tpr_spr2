@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
       FILE *fptr;
       char buffer[50];
       snprintf(buffer, sizeof(buffer), "output_%siters_%sscaled_%dworld", argv[1], argv[2], world_size);
-      fptr = fopen("output","a");
+      fptr = fopen(buffer,"a");
       fprintf(fptr, "%1.6f\n", t2-t1);
       fclose(fptr);
 

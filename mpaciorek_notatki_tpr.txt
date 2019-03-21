@@ -1,0 +1,60 @@
+mpaciorek@agh.edu.pl
+Zawsze jeden węzeł (-N)
+Ile procesorów na węźle (do oporu) (-n)
+Ile czasu (-t)
+
+
+Piewrsza opcja:
+1) wysyłamy liczby punktów (uwaga na przepełnione inty)
+2) wysyłamy pi (lepiej tak robić) i sumujemy te wyniki, dzielimy przez liczbę procesorów
+
+Proces będzie wymagał bariery (przed reduce/gather).
+Budujemy program MPIowy, który robi wszystkie ify MPIowe (żeby być swoim wątkiem).
+Bariera przed liczeniem pi.
+Potem reduce/gather.
+Czas znowu po uzyskaniu PI.
+
+3 możliwości spotkania sie watków:
+1) (niepolecana) send w każdym i 3 receivy (NIE ROBIĆ TAK)
+2) gather (zbieramy do listy - jak ostatnio na labach)
+3) REDUCE - najlepsza opcja (z sumą, średnią itp.)
+
+Ile punktów będzie liczyć wątek?
+Mamy do zrobienia 2 wersje eksperymentu: skalowalną i nieskalowalną (skalowane i dla stałego rozmiaru problemu).
+
+
+
+Wskazówka: potrzebne sa 3 rozmiary problemu: dobrze zacząć od miliarda, to wystarczy żeby ładne wykresy były i wystarczająco szybkie.
+
+Robimy w sumie 24 wykresy..
+
+Co to efficiency? Sprawdzamy czy speedup/l.proc jest ok, czyli kreska na jedynce jest idealna (ale nie będzie bo narzut na komunikację).
+
+Serial fraction = ((1/s)-(1/e))/(1-(1/t))
+
+To była wersja nieskalowana (liczyliśmy przykładowo po pół miliarda z palca na każdym procesorze).
+
+Seria wykresów skalowanych: każdy prodesor liczy tyle procesów ile zadany (jeśli parametr jest miliard to nie dajemy na 4 po ćwierć miliarda, tylko po miliardzie na 4)
+Czas od liczby proc. powinien być taki sam.
+Speedup nie wyjdzie, bo zawsze będzie na "1". Wzór na speedup zmienia się w w. skalowanej.
+S=(<czas_na_jednym) * N)/(<czas_na_N>)
+Pozostałe metryki sie nie zmieniają (ale zależą od speedupu, więc sie naprawiają).
+
+t1 - ile miliard na jednym procesorze, tn - czas wykonania całego programu (n razy większy na n wątkach)
+
+Rozmiary problemów: 1e9, 1e10 to długo, 1e11 raczej sie nie policzy szybko, można też 1e6 żeby pokazać jak beznadziejnie wyjdzie.
+
+Czy trzeba liczyć wiele razy:
+NIE
+Forma sprawozdania:
+Raczej luźno
+
+
+
+Stawiamy bariere
+czas
+liczymy pi
+reduce
+czas
+
+W wersji nieskalowanej wszystkie procesory mają policzyć jedną część, żeby był jeden kod można podzielić

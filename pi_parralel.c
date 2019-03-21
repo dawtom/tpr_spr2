@@ -44,8 +44,14 @@ int main(int argc, char** argv) {
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
       t2 = MPI_Wtime();
       double pi = *numbers/((double) world_size);
-      printf("Time: %1.6f\n", t2-t1);
-      printf("\nPi is %f\n", pi);
+//      printf("Time: %1.6f\n", t2-t1);
+//      printf("\nPi is %f\n", pi);
+      FILE *fptr;
+      char buffer[50];
+      snprintf(buffer, sizeof(buffer), "output_%Citers_%Cscaled_%dworld", argv[1], argv[2]);
+      fptr = fopen("output","a");
+      fprintf(fptr, "%1.6f\n", t2-t1);
+      fclose(fptr);
 
   } else if (world_rank == 1) {
       srand(clock());

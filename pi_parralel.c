@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
 //      printf("\nPi is %f\n", pi);
       FILE *fptr;
       char buffer[50];
-      snprintf(buffer, sizeof(buffer), "output_%siters_%sscaled_%dworld", argv[1], argv[2], world_size);
+      snprintf(buffer, sizeof(buffer), "output_%siters_%sscaled", argv[1], argv[2]);
       fptr = fopen(buffer,"a");
       fprintf(fptr, "%1.6f\n", t2-t1);
       fclose(fptr);

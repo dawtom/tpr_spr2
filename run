@@ -1,6 +1,6 @@
 #END=20;
 #for ((i=1;i<=END;i++));
 #do 
-mpicc -o ex reduce.c
-mpiexec -machinefile ./allnodes -np $1 ./ex $2
+mpicc -o ex pi_parralel.c
+mpiexec -np $1 ./ex $2 $3
 #done

@@ -1,4 +1,4 @@
-mpaciorek@agh.edu.pl
+ mpaciorek@agh.edu.pl
 Zawsze jeden węzeł (-N)
 Ile procesorów na węźle (do oporu) (-n)
 Ile czasu (-t)

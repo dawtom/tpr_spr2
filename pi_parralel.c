@@ -29,6 +29,7 @@ int main(int argc, char** argv) {
   double number;
   long iter_num = atol(argv[1]);
   if (world_rank == 0) {
+      double t1, t2;
       srand(clock());
       srand(time(NULL) + world_rank);
       MPI_Barrier(MPI_COMM_WORLD);

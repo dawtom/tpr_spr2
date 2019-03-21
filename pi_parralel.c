@@ -43,66 +43,77 @@ int main(int argc, char** argv) {
   } else if (world_rank == 1) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 2) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 3) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 4) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 5) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 6) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 7) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 8) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 9) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 10) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
   } else if (world_rank == 11) {
       srand(clock());
       srand(time(NULL) + world_rank);
+      MPI_Barrier(MPI_COMM_WORLD);
       number = get_pi(iter_num);
       MPI_Reduce(&number, numbers, 1,  MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
